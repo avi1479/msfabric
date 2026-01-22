@@ -1,0 +1,71 @@
+table FactSalesOrder
+	lineageTag: 2ec50024-c501-43f1-a9bc-4f11ac6d1504
+
+	column SalesOrderKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 031f4abd-3b63-4b31-ba74-2d4f5905c8c1
+		summarizeBy: count
+		sourceColumn: SalesOrderKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 5cf705bb-e6d6-4c73-84a5-c5bdd70a8dc4
+		summarizeBy: none
+		sourceColumn: SalesOrderDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: b71acfba-4ea9-489f-aaa6-61772e3ffd03
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e81f000-f90a-4878-8253-c443eb7bce38
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: cd18b753-9be5-42c0-818f-1ee905441a4c
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTotal
+		dataType: double
+		lineageTag: abe9edf5-0119-446c-8ce3-49b61ee9c98c
+		summarizeBy: sum
+		sourceColumn: SalesTotal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FactSalesOrder = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(ServerName, DatabaseName),
+				    dbo_FactSalesOrder = Source{[Schema="dbo",Item="FactSalesOrder"]}[Data]
+				in
+				    dbo_FactSalesOrder
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

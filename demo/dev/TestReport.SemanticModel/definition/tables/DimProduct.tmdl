@@ -1,0 +1,59 @@
+table DimProduct
+	lineageTag: 4f323067-0129-4261-afd8-691c2ed204a3
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: c3f2b8f9-8831-44fb-b784-3e5271bc78f8
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductAltKey
+		dataType: string
+		lineageTag: 58106578-cbb9-4e0d-9610-d6f5a15c5f11
+		summarizeBy: none
+		sourceColumn: ProductAltKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: 5686331d-e67e-44c8-836b-b7c5c8ca7687
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: a3e9e5af-c1ae-4cc9-aed9-d54595cdf44b
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column ListPrice
+		dataType: double
+		lineageTag: b780cd29-17db-49ef-a3aa-f06528bd0e3e
+		summarizeBy: none
+		sourceColumn: ListPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DimProduct = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(ServerName, DatabaseName),
+				    dbo_DimProduct = Source{[Schema="dbo",Item="DimProduct"]}[Data]
+				in
+				    dbo_DimProduct
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,17 @@
+relationship 3b6eb410-38ca-4a50-b46d-3bd864dea777
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.DateAltKey
+	toColumn: LocalDateTable_4fd6ff4a-ea15-4691-958f-0ee1f5b52867.Date
+
+relationship AutoDetected_c6416c58-e23a-4d7c-b432-c9b2340e87df
+	fromColumn: FactSalesOrder.ProductKey
+	toColumn: DimProduct.ProductKey
+
+relationship dd6be65f-0cee-2e8b-6136-0283da927e71
+	fromColumn: FactSalesOrder.CustomerKey
+	toColumn: DimCustomer.CustomerKey
+
+relationship 001f9ff3-8449-0e7e-9618-1fe3e3231642
+	fromColumn: FactSalesOrder.SalesOrderDateKey
+	toColumn: DimDate.DateKey
+

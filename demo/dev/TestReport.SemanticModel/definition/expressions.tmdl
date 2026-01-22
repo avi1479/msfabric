@@ -1,0 +1,21 @@
+expression ServerName = "fab-dev-123.database.windows.net" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: f83f7b62-16c7-469d-a1ec-2ab56c99844d
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression DatabaseName = "adventureworks-dev" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: e683cff8-6ede-4cb7-a2dc-6345a2079f89
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Environment = "dev" meta [IsParameterQuery=true, List={"dev", "prod", "test"}, DefaultValue="dev", Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 54b2b040-6ca9-47a0-9500-07dec98c6eea
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
